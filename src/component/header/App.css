@@ -1,0 +1,64 @@
+body {
+  box-sizing: border-box;
+  margin: 0%;
+  padding: 0%;
+  transition: all 0.5s;
+}
+.container input {
+  background-image: url("../../assets/search.svg");
+
+  background-repeat: no-repeat;
+  background-position: 99%;
+  transition: all 0.5s;
+}
+
+/* header::before {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  content: "";
+  transition: all 0.5s; */
+
+/*  
+  background-image: url(src/assets/wp4016036.jpg); */
+
+/* position: absolute;
+  height: 100%;
+  z-index: -2;
+  filter: blur(5px);
+  opacity: 0.9;
+} */
+
+:root {
+  --size: 40px;
+  --bord: 10px;
+}
+
+.chart {
+  top: -1.2rem;
+
+  width: var(--size);
+  height: var(--size);
+  margin: 1em auto;
+  border-radius: 50%;
+  background-image: conic-gradient(red var(--value), lightgrey var(--value));
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 85%;
+  height: 85%;
+
+  border-radius: inherit;
+}

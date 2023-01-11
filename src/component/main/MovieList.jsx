@@ -1,4 +1,4 @@
-import MovieCard from "../Movies/MovieCard";
+import MovieCard from "./MovieCard";
 
 export default function MovieList() {
   return (

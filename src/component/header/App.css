@@ -36,7 +36,7 @@ body {
 
 .chart {
   top: -1.2rem;
-
+  margin-left: 0 !important;
   width: var(--size);
   height: var(--size);
   margin: 1em auto;
@@ -61,4 +61,26 @@ body {
   height: 85%;
 
   border-radius: inherit;
+}
+
+.ant-radio-group-solid
+  :where(
+    .css-dev-only-do-not-override-acm2ia
+  ).ant-radio-button-wrapper-checked:not(
+    :where(
+        .css-dev-only-do-not-override-acm2ia
+      ).ant-radio-button-wrapper-disabled
+  ) {
+  color: #fff;
+  background: #4b5563;
+}
+.ant-radio-group-solid
+  :where(
+    .css-dev-only-do-not-override-acm2ia
+  ).ant-radio-button-wrapper-checked:not(
+    :where(
+        .css-dev-only-do-not-override-acm2ia
+      ).ant-radio-button-wrapper-disabled
+  ):hover {
+  background: #1e293b;
 }

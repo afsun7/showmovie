@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { api_key, baseURL, imgbaseURL } from "../apiconfig";
-import MovieCard from "../Movies/MovieCard";
+
+import MovieCard from "../main/MovieCard";
 
 export default function Slider({ setImg }) {
   const [movies, setmovies] = useState([]);
@@ -48,8 +49,6 @@ export default function Slider({ setImg }) {
       >
         {movies.map((movie) => (
           <SwiperSlide key={movie.id}>
-       
-
             <MovieCard
               original_title={movie.original_title}
               src={`${imgbaseURL}/w500${movie.poster_path}`}
@@ -60,6 +59,7 @@ export default function Slider({ setImg }) {
           </SwiperSlide>
         ))}
       </Swiper>
+     
     </div>
   );
 }

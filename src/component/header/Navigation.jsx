@@ -1,13 +1,18 @@
+import { useContext } from "react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { UserContext } from "../../../context/UserContext";
+
+const menuItems = [
+  { path: "/movie", text: "movies" },
+  { path: "/tv", text: "tv Shows" },
+  { path: "/people", text: "people" },
+];
 
 export default function Navigation() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const menuItems = [
-    { path: "/movie", text: "movies" },
-    { path: "/tv", text: "tv Shows" },
-    { path: "/people", text: "people" },
-  ];
+  const { user } = useContext(UserContext);
+
   function activeClass({ isActive }) {
     return isActive ? "text-rose-500" : "hover:text-slate-200";
   }
@@ -34,17 +39,24 @@ export default function Navigation() {
         </ul>
         <div className="text-sm uppercase ml-auto">
           <ul className=" flex items-center gap-2 md:gap-3 text-sm md:text-xl lg:gap-6">
-            <li>
-              <NavLink to="/login">Login</NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/sign up"
-                className="bg-rose-700 px-3 py-2 rounded-xl text-white hover:bg-rose-600 lg:px-6 lg:py-2 "
-              >
-                Sign up
-              </NavLink>
-            </li>
+            {user ? (
+              <div></div>
+            ) : (
+              <>
+                <li>
+                  <NavLink to="/login">Login</NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/sign up"
+                    className="bg-rose-700 px-3 py-2 rounded-xl text-white hover:bg-rose-600 lg:px-6 lg:py-2 "
+                  >
+                    Sign up
+                  </NavLink>
+                </li>
+              </>
+            )}
+
             <li className="md:hidden">
               <div>
                 <button onClick={() => setIsOpenMenu(!isOpenMenu)}>

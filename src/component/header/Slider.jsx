@@ -55,11 +55,11 @@ export default function Slider({ setImg }) {
               vote={movie.vote_average}
               setImg={setImg}
               backdrop={movie.backdrop_path}
+              id={movie.id}
             />
           </SwiperSlide>
         ))}
       </Swiper>
-     
     </div>
   );
 }

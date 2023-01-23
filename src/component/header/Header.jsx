@@ -13,19 +13,15 @@ export default function Header() {
     <header
       className="bg-cover  bg-center h-auto  "
       style={{
-        backgroundImage: ` linear-gradient(to bottom , rgba(0,0,0), rgba(0,0,0,0.6), rgba(0,0,0,0.6), #1e293b ),${
-          location.pathname === "/"
-            ? `url(${img})`
-            : `url(public/wp4016036.jpg)`
-        }`,
+        backgroundImage: ` linear-gradient(to bottom , rgba(0,0,0), rgba(0,0,0,0.6), rgba(0,0,0,0.6), #1e293b ),${`url(${img})`}`,
       }}
     >
       <div>
         <Navigation />
         <div className="container">
           <Search />
-          <Follow />
-          <div className={location.pathname !== "/" ? "hidden" : ""}>
+          <div className={location.pathname !== "/" && "hidden"}>
+            <Follow />
             {location.pathname === "/" && <Slider setImg={setImg} />}
           </div>
         </div>

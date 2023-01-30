@@ -11,11 +11,12 @@ const menuItems = [
 
 export default function Navigation() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const { user } = useContext(UserContext);
+  const user = useContext(UserContext);
 
   function activeClass({ isActive }) {
     return isActive ? "text-rose-500" : "hover:text-slate-200";
   }
+
   return (
     <>
       <nav className="bg-slate-900  flex items-center  bg-none  justify-between -mt-6  pb-4 pt-10 p-4   md:bg-transparent md:mt-0 md:pt-12 md:container">
@@ -39,8 +40,15 @@ export default function Navigation() {
         </ul>
         <div className="text-sm uppercase ml-auto">
           <ul className=" flex items-center gap-2 md:gap-3 text-sm md:text-xl lg:gap-6">
-            {user ? (
-              <div></div>
+            {user.user ? (
+              <li>
+                <NavLink
+                  to="/profile"
+                  className="bg-rose-700 px-3 py-2 rounded-xl text-white hover:bg-rose-600 lg:px-6 lg:py-2 "
+                >
+                  {user.user.name}
+                </NavLink>
+              </li>
             ) : (
               <>
                 <li>

@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./src/App";
+import LogIn from "./src/component/main/LogIn";
 import Movie from "./src/component/main/Movie";
 import Trending from "./src/component/main/Trending";
 import Freewatch from "./src/component/main/Trending";
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/people",
         element: <h1>this is people</h1>,
+      },
+      {
+        path: "/login",
+        element: <LogIn />,
       },
     ],
   },

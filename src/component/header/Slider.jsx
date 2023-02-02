@@ -6,6 +6,7 @@ import axios from "axios";
 import { api_key, baseURL, imgbaseURL } from "../apiconfig";
 
 import MovieCard from "../main/MovieCard";
+import { Link } from "react-router-dom";
 
 export default function Slider({ setImg }) {
   const [movies, setmovies] = useState([]);
@@ -49,14 +50,16 @@ export default function Slider({ setImg }) {
       >
         {movies.map((movie) => (
           <SwiperSlide key={movie.id}>
-            <MovieCard
-              original_title={movie.original_title}
-              src={`${imgbaseURL}/w500${movie.poster_path}`}
-              vote={movie.vote_average}
-              setImg={setImg}
-              backdrop={movie.backdrop_path}
-              id={movie.id}
-            />
+            <Link to={`/movie/${movie.id}`}>
+              <MovieCard
+                original_title={movie.original_title}
+                src={`${imgbaseURL}/w500${movie.poster_path}`}
+                vote={movie.vote_average}
+                setImg={setImg}
+                backdrop={movie.backdrop_path}
+                id={movie.id}
+              />
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

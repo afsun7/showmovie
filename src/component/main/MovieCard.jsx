@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { imgbaseURL } from "../apiconfig";
 
 export default function MovieCard({
@@ -11,8 +11,7 @@ export default function MovieCard({
   w,
 }) {
   return (
-    <Link to={`/movie/${id}`}>
-      
+    <>
       <div
         className="flex  flex-col items-start aspect-[2/4] "
         style={{ width: `${w}` }}
@@ -33,6 +32,6 @@ export default function MovieCard({
           <div className="-mt-4 font-sans font-thin ">{original_title}</div>
         </div>
       </div>
-    </Link>
+    </>
   );
 }

@@ -1,3 +1,4 @@
+import { ExportOutlined } from "@ant-design/icons";
 import { useContext } from "react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
@@ -11,7 +12,7 @@ const menuItems = [
 
 export default function Navigation() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const user = useContext(UserContext);
+  const users = useContext(UserContext);
 
   function activeClass({ isActive }) {
     return isActive ? "text-rose-500" : "hover:text-slate-200";
@@ -40,13 +41,16 @@ export default function Navigation() {
         </ul>
         <div className="text-sm uppercase ml-auto">
           <ul className=" flex items-center gap-2 md:gap-3 text-sm md:text-xl lg:gap-6">
-            {user.user ? (
+            {users.user ? (
               <li>
+                <button className="mr-4 " onClick={users.logout}>
+                  <ExportOutlined className="text-2xl " />
+                </button>
                 <NavLink
                   to="/profile"
                   className="bg-rose-700 px-3 py-2 rounded-xl text-white hover:bg-rose-600 lg:px-6 lg:py-2 "
                 >
-                  {user.user.name}
+                  {users.user.username}
                 </NavLink>
               </li>
             ) : (

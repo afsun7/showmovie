@@ -2,34 +2,36 @@ import { Radio } from "antd";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { api_key, baseURL, imgbaseURL } from "../apiconfig";
 import MovieCard from "./MovieCard";
 
 export default function Trending({ setImg }) {
   const [value, setvalue] = useState("movie");
   const [trending, setTrending] = useState([]);
-  let media_type = "movie";
+
+  let mediatype = "movie";
   switch (value) {
     case "movie":
-      media_type = "movie";
+      mediatype = "movie";
 
       break;
     case "tv":
-      media_type = "tv";
+      mediatype = "tv";
 
       break;
   }
   async function gettrending() {
     const { data } = await axios.get(
-      `${baseURL}/trending/${media_type}/day?api_key=${api_key}`
+      `${baseURL}/trending/${mediatype}/day?api_key=${api_key}`
     );
     setTrending(data.results);
   }
 
   useEffect(() => {
     gettrending();
-  }, [media_type]);
-  console.log(trending);
+  }, [mediatype]);
+  
   return (
     <div className="container">
       <div className="flex my-8">
@@ -46,12 +48,14 @@ export default function Trending({ setImg }) {
       <div className="flex gap-4 overflow-x-auto  mt-4  ">
         {trending.map((movie) => (
           <div className="w-screen">
-            <MovieCard
-              original_title={movie.title}
-              src={`${imgbaseURL}/w500${movie.poster_path}`}
-              vote={movie.vote_average}
-              w="11vw"
-            />
+            <Link to={`/${mediatype}/${movie.id}`}>
+              <MovieCard
+                original_title={movie.title}
+                src={`${imgbaseURL}/w500${movie.poster_path}`}
+                vote={movie.vote_average}
+                w="11vw"
+              />
+            </Link>
           </div>
         ))}
       </div>

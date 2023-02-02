@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import UserProvider from "./context/UserContext";
 import App from "./src/App";
 import LogIn from "./src/component/main/LogIn";
 import Movie from "./src/component/main/Movie";
@@ -7,7 +8,11 @@ import Freewatch from "./src/component/main/Trending";
 
 export const router = createBrowserRouter([
   {
-    element: <App />,
+    element: (
+      <UserProvider>
+        <App />
+      </UserProvider>
+    ),
     children: [
       {
         path: "/",
@@ -18,7 +23,7 @@ export const router = createBrowserRouter([
         element: <h1>this is movie</h1>,
       },
       {
-        path: "/movie/:id",
+        path: "/:media_type/:movieId",
         element: <Movie />,
       },
       {

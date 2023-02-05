@@ -47,7 +47,9 @@ export default function UserProvider({ children }) {
   }
 
   function logout() {
-    console.log("exit");
+    setUser(null);
+    setsession(null);
+    localStorage.clear();
   }
   return (
     <UserContext.Provider value={{ user, login, session, logout }}>

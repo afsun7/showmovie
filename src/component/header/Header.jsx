@@ -13,14 +13,16 @@ export default function Header() {
     <header
       className="bg-cover  bg-center h-auto  "
       style={{
-        backgroundImage: ` linear-gradient(to bottom , rgba(0,0,0), rgba(0,0,0,0.6), rgba(0,0,0,0.6), #1e293b ),${`url(${img})`}`,
+        backgroundImage: ` linear-gradient(to bottom , rgba(0,0,0), rgba(0,0,0,0.6), rgba(0,0,0,0.6), #1e293b ),${
+          location.pathname === "/" ? `url(${img}) `:`url("")`
+        }`,
       }}
     >
       <div>
         <Navigation />
         <div className="container">
           <div className={location.pathname !== "/" && "hidden "}>
-            <Search />
+            {/* <Search /> */}
             <Follow />
             {location.pathname === "/" && <Slider setImg={setImg} />}
           </div>

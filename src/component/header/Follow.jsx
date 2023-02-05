@@ -1,7 +1,7 @@
 export default function Follow() {
   return (
     <section>
-      <div className="flex gap-4 mt-4 justify-end items-center text-slate-400 ">
+      <div className="flex h-10 gap-4 mt-4 justify-end items-center text-slate-400 border-solid border-2  border-slate-500  rounded-md pr-2">
         <span>Follow us:</span>
         <ul className="flex gap-4 ">
           <li className="hover:text-rose-600">

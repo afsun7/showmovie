@@ -3,6 +3,9 @@ import { useContext } from "react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { UserContext } from "../../../context/UserContext";
+import { ExclamationCircleFilled } from "@ant-design/icons";
+import { Button, Modal, Space } from "antd";
+const { confirm } = Modal;
 
 const menuItems = [
   { path: "/movie", text: "movies" },
@@ -13,6 +16,20 @@ const menuItems = [
 export default function Navigation() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const users = useContext(UserContext);
+
+  const showConfirm = () => {
+    confirm({
+      title: "Do you Want to exit?",
+      icon: <ExclamationCircleFilled />,
+
+      onOk() {
+        users.logout();
+      },
+      onCancel() {
+        console.log("Cancel");
+      },
+    });
+  };
 
   function activeClass({ isActive }) {
     return isActive ? "text-rose-500" : "hover:text-slate-200";
@@ -43,7 +60,7 @@ export default function Navigation() {
           <ul className=" flex items-center gap-2 md:gap-3 text-sm md:text-xl lg:gap-6">
             {users.user ? (
               <li>
-                <button className="mr-4 " onClick={users.logout}>
+                <button className="mr-4 " onClick={showConfirm}>
                   <ExportOutlined className="text-2xl " />
                 </button>
                 <NavLink
@@ -60,10 +77,10 @@ export default function Navigation() {
                 </li>
                 <li>
                   <NavLink
-                    to="/sign up"
+                    to="/search"
                     className="bg-rose-700 px-3 py-2 rounded-xl text-white hover:bg-rose-600 lg:px-6 lg:py-2 "
                   >
-                    Sign up
+                    Search
                   </NavLink>
                 </li>
               </>

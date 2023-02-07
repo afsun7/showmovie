@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import UserProvider from "./context/UserContext";
 import App from "./src/App";
-import Search from "./src/component/header/Search";
+import Search from "./src/component/header/search/Search";
+
 import LogIn from "./src/component/main/LogIn";
 import Movie from "./src/component/main/Movie";
 import Trending from "./src/component/main/Trending";
-import Freewatch from "./src/component/main/Trending";
+
 
 export const router = createBrowserRouter([
   {

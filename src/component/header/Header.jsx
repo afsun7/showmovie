@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Follow from "./Follow";
 import Navigation from "./Navigation";
-import Search from "./Search";
+import Search from "./search/Search";
 import Slider from "./Slider";
 
 export default function Header() {
@@ -14,7 +14,7 @@ export default function Header() {
       className="bg-cover  bg-center h-auto  "
       style={{
         backgroundImage: ` linear-gradient(to bottom , rgba(0,0,0), rgba(0,0,0,0.6), rgba(0,0,0,0.6), #1e293b ),${
-          location.pathname === "/" ? `url(${img}) `:`url("")`
+          location.pathname === "/" ? `url(${img}) ` : `url("")`
         }`,
       }}
     >

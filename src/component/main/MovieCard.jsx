@@ -21,12 +21,17 @@ export default function MovieCard({
       >
         <img
           src={src}
-          alt=""
-          className={`rounded-xl ${location.pathname === "/search" && `w-28`}`}
-          onMouseOver={(e) => setImg(`${imgbaseURL}/w500${backdrop}`)}
+          className={`rounded-md   ${
+            location.pathname === "/search" && ` w-[7.83rem]   `
+          }`}
+          onMouseOver={(e) => setImg(`${imgbaseURL}/w500/${backdrop}`)}
         />
 
-        <div className={` ml-2  ${location.pathname === "/search" ?`mt-4`:`-mt-4`} `}>
+        <div
+          className={` ml-2  ${
+            location.pathname === "/search" ? `mt-4` : `-mt-4`
+          } `}
+        >
           <div className="chart ml-0" style={{ "--value": `${vote * 10}%` }}>
             <div className="inner text-xs bg-slate-800 ">{`${Math.round(
               vote * 10

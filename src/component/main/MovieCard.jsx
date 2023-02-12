@@ -8,6 +8,7 @@ export default function MovieCard({
   setImg,
   backdrop,
   id,
+  overview,
   w,
 }) {
   const location = useLocation();
@@ -22,7 +23,8 @@ export default function MovieCard({
         <img
           src={src}
           className={`rounded-md   ${
-            location.pathname === "/search" && ` w-[7.83rem]   `
+            location.pathname === "/search" &&
+            ` w-[7.83rem] h-[11.8rem] 	object-fit: cover -z-10  `
           }`}
           onMouseOver={(e) => setImg(`${imgbaseURL}/w500/${backdrop}`)}
         />
@@ -38,6 +40,11 @@ export default function MovieCard({
             )}%`}</div>
           </div>
           <div className="-mt-4 font-sans font-thin ">{original_title}</div>
+          {location.pathname === "/search" && (
+            <div className=" text-xs font-thin mt-4  text-overview ">
+              {overview}
+            </div>
+          )}
         </div>
       </div>
     </>

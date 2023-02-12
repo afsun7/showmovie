@@ -12,23 +12,6 @@ body {
   transition: all 0.5s;
 }
 
-/* header::before {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  content: "";
-  transition: all 0.5s; */
-
-/*  
-  background-image: url(src/assets/wp4016036.jpg); */
-
-/* position: absolute;
-  height: 100%;
-  z-index: -2;
-  filter: blur(5px);
-  opacity: 0.9;
-} */
-
 :root {
   --size: 40px;
   --bord: 10px;
@@ -83,4 +66,12 @@ body {
       ).ant-radio-button-wrapper-disabled
   ):hover {
   background: #1e293b;
+}
+
+.text-overview {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

@@ -33,6 +33,7 @@ export default function Search() {
   }, [query]);
 
   function showItem(item) {
+ 
     switch (item.media_type) {
       case "person":
         return <Person key={item.id} item={item} />;
@@ -53,7 +54,7 @@ export default function Search() {
             value={query}
             onChange={(e) => setquery(e.target.value)}
           ></input>
-          {searchResult.map((item) => showItem(item))}
+          {searchResult.map(showItem)}
         </section>
       ) : (
         <div className="h-[30rem] flex">

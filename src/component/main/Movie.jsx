@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -40,15 +39,15 @@ export default function Movie() {
   return (
     <div className="container ">
       {movie ? (
-        <div className="flex mt-4">
-          <div className="w-screen  lg:w-2/4 ">
+        <div className="flex justify-center items-center content-center flex-col mt-4 md:flex-row">
+          <div className="w-[300px] h-[450px] object-cover">
             <img
               src={`${imgbaseURL}/w500${movie.poster_path}`}
               alt=""
-              className=" rounded-lg"
+              className="w-full h-full  rounded-lg"
             />
           </div>
-          <div className="flex flex-col ml-8 gap-2">
+          <div className="w-[300px] flex flex-col ml-8 gap-2 lg:w-2/3">
             <h1 className=" mt-10 text-[36px] ">{movie.title}</h1>
 
             <button className="mr-auto mb-4" onClick={handelAddfavorite}>

@@ -8,13 +8,17 @@ import { Button, Modal, Space } from "antd";
 const { confirm } = Modal;
 
 const menuItems = [
-  { path: "/movie", text: "movies" },
-  { path: "/tv", text: "tv Shows" },
-  { path: "/people", text: "people" },
+  { path: "get/movie/upcoming", text: "upcoming" },
+  { path: "get/tv/top_rated", text: "top_rated" },
+  { path: "get/movie/now_playing", text: "now_playing" },
 ];
 
 export default function Navigation() {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+  //for tab
+  const [MovieActiveTab, setMovieActiveTab] = useState("");
+
   const users = useContext(UserContext);
 
   const showConfirm = () => {
@@ -31,8 +35,12 @@ export default function Navigation() {
     });
   };
 
+  function handelChangeMovieActiveTab(tab) {
+    setMovieActiveTab(tab);
+  }
+
   function activeClass({ isActive }) {
-    return isActive ? "text-rose-500" : "hover:text-slate-200";
+    return isActive ? "text-rose-500 text-sm " : "hover:text-slate-200 ";
   }
 
   return (
@@ -46,9 +54,12 @@ export default function Navigation() {
             </h1>
           </Link>
         </div>
-        <ul className=" hidden md:flex m-auto gap-6 uppercase text-sm  ">
+        <ul className=" hidden md:flex m-auto gap-6 uppercase  text-xs  ">
           {menuItems.map((item) => (
-            <li key={item.path}>
+            <li
+              key={item.path}
+              onClick={() => handelChangeMovieActiveTab(`${item.text}`)}
+            >
               <NavLink
                 to={`${item.path}`}
                 className={activeClass}
@@ -65,7 +76,7 @@ export default function Navigation() {
                 </button>
                 <NavLink
                   to="/profile"
-                  className="bg-rose-700 px-3 py-2 rounded-xl text-white hover:bg-rose-600 lg:px-6 lg:py-2 "
+                  className=" bg-slate-700 px-3 py-2 rounded-xl text-white hover:bg-slate-800  lg:px-6 lg:py-2 "
                 >
                   {users.user.username}
                 </NavLink>
@@ -75,17 +86,17 @@ export default function Navigation() {
                 <li>
                   <NavLink to="/login">Login</NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="/search"
-                    className="bg-rose-700 px-3 py-2 rounded-xl text-white hover:bg-rose-600 lg:px-6 lg:py-2 "
-                  >
-                    Search
-                  </NavLink>
-                </li>
               </>
             )}
 
+            <li>
+              <NavLink
+                to="/search"
+                className="bg-rose-700 px-3 py-2 rounded-xl text-white hover:bg-rose-600 lg:px-6 lg:py-2 "
+              >
+                Search
+              </NavLink>
+            </li>
             <li className="md:hidden">
               <div>
                 <button onClick={() => setIsOpenMenu(!isOpenMenu)}>
@@ -110,15 +121,18 @@ export default function Navigation() {
       </nav>
       {isOpenMenu && (
         <div className="bg-slate-900 border-t-2 border-slate-700 text-slate-300 -mx-40  py-4 text-center  md:hidden">
-          <ul className="flex flex-col gap-4 ">
+          <ul className="flex flex-col gap-4 text-xs">
             {menuItems.map((item) => (
-              <li key={item.path}>
+              <li
+                key={item.path}
+                onClick={() => handelChangeMovieActiveTab(`${item.text}`)}
+              >
                 <NavLink
                   to={`${item.path}`}
                   className={activeClass}
                   onClick={() => setIsOpenMenu(false)}
                 >
-                  {item.text}
+                  {item.text.toUpperCase()}
                 </NavLink>
               </li>
             ))}

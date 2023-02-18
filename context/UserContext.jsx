@@ -33,14 +33,15 @@ export default function UserProvider({ children }) {
         `${baseURL}/authentication/token/validate_with_login?api_key=${api_key}`,
         { username, password, request_token: tokenResult.data.request_token }
       );
+      
       const { data } = await axios.post(
-        `${baseURL}//authentication/session/new?api_key=${api_key}`,
+        `${baseURL}/authentication/session/new?api_key=${api_key}`,
         { request_token: tokenResult.data.request_token }
       );
       setsession(data.session_id);
       localStorage.setItem("session", data.session_id);
       navigate("/", { replace: true });
-      // toast.success(`wellcome ${}`)
+        toast.success(`wellcome ${username}`)
     } catch {
       toast.error("username or password is not correct");
     }

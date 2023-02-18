@@ -17,6 +17,7 @@ export default function Person({ item }) {
           backdrop={item.profile_path}
           id={item.id}
         />
+       
       </div>
     </Link>
   );

@@ -16,8 +16,8 @@ export default function MovieCard({
     <>
       <div
         className={`flex  items-start aspect-[2/4] ${
-          location.pathname === "/" ? `flex-col` : `flex-row `
-        }`}
+          location.pathname === "/search" ? `flex-row` : `flex-col`
+        } `}
         style={{ width: `${w}` }}
       >
         <img

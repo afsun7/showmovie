@@ -16,7 +16,7 @@ export default function Slider({ setImg }) {
     );
     setmovies(data.results);
   }
-  console.log(movies);
+
   useEffect(() => {
     loadMovies();
   }, []);

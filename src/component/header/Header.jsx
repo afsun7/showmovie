@@ -22,7 +22,6 @@ export default function Header() {
         <Navigation />
         <div className="container">
           <div className={location.pathname !== "/" && "hidden "}>
-         
             <Follow />
             {location.pathname === "/" && <Slider setImg={setImg} />}
           </div>

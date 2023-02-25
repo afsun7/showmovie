@@ -10,6 +10,7 @@ export const UserContext = createContext();
 
 export default function UserProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [favorite, setFavorite] = useState([]);
   const [session, setsession] = useState(() => localStorage.getItem("session"));
   const navigate = useNavigate();
 
@@ -17,7 +18,15 @@ export default function UserProvider({ children }) {
     const { data } = await axios.get(
       `${baseURL}/account?api_key=${api_key}&session_id=${session}`
     );
+    getfavorite(data.id);
     setUser(data);
+  }
+
+  async function getfavorite(id) {
+    const favGetMovie = await axios.get(
+      `${baseURL}/account/${id}/favorite/movies?api_key=${api_key}&session_id=${session}`
+    );
+    setFavorite(favGetMovie.data.results);
   }
 
   useEffect(() => {
@@ -33,7 +42,7 @@ export default function UserProvider({ children }) {
         `${baseURL}/authentication/token/validate_with_login?api_key=${api_key}`,
         { username, password, request_token: tokenResult.data.request_token }
       );
-      
+
       const { data } = await axios.post(
         `${baseURL}/authentication/session/new?api_key=${api_key}`,
         { request_token: tokenResult.data.request_token }
@@ -41,7 +50,7 @@ export default function UserProvider({ children }) {
       setsession(data.session_id);
       localStorage.setItem("session", data.session_id);
       navigate("/", { replace: true });
-        toast.success(`wellcome ${username}`)
+      toast.success(`wellcome ${username}`);
     } catch {
       toast.error("username or password is not correct");
     }
@@ -53,7 +62,9 @@ export default function UserProvider({ children }) {
     localStorage.clear();
   }
   return (
-    <UserContext.Provider value={{ user, login, session, logout }}>
+    <UserContext.Provider
+      value={{ user, login, session, logout, favorite, getfavorite }}
+    >
       {children}
     </UserContext.Provider>
   );

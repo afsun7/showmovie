@@ -18,7 +18,7 @@ export default function Movies() {
   useEffect(() => {
     getMovieCategorie();
   }, [type, categorie]);
-  console.log(movies);
+
 
   return (
     <div className="container mt-6">
